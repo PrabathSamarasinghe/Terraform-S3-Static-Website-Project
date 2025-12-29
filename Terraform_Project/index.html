@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Portfolio | PrabathSamarasinghe - Cloud Engineer & DevOps Expert</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #ffffff;
+  color: #001f4d;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Animated Background Gradient - Blue and White Theme */
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0; left: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, #ffffff 0%, #e6f3ff 25%, #b3d9ff 50%, #80bfff 75%, #4da6ff 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 25s ease infinite;
+}
+@keyframes gradientShift {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* Floating particles - Blue theme */
+.particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: rgba(0, 102, 204, 0.6);
+  border-radius: 50%;
+  animation: float 15s linear infinite;
+  box-shadow: 0 0 10px rgba(0, 102, 204, 0.4);
+}
+@keyframes float {
+  0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+}
+
+/* Navigation - Blue and White */
+nav {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  padding: 20px 50px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 2px solid #0066cc;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.1);
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: #0066cc;
+  text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.2);
+  transition: all 0.3s ease;
+}
+.logo:hover {
+  color: #0052a3;
+  transform: scale(1.05);
+}
+
+.nav-links {
+  display: flex; gap: 35px;
+}
+.nav-links a {
+  color: #003d7a;
+  text-decoration:none;
+  font-weight:600;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.nav-links a::after {
+  content:'';
+  position:absolute;
+  bottom:-8px; left:0;
+  width:0;
+  height:3px;
+  background: linear-gradient(90deg, #0066cc, #0099ff);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+.nav-links a:hover {
+  color: #0066cc;
+}
+.nav-links a:hover::after { width:100%; }
+
+/* Hero Section - Blue and White */
+.hero {
+  height:100vh;
+  display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+  padding:0 20px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(179,217,255,0.7) 100%);
+}
+.hero h1 {
+  font-size:5.5em;
+  font-weight:900;
+  margin-bottom:25px;
+  color: #0066cc;
+  text-shadow: 3px 3px 6px rgba(0, 102, 204, 0.3);
+  animation: fadeInUp 1s ease, pulse 4s ease infinite;
+}
+.hero .subtitle {
+  font-size: 2em;
+  color: #0052a3;
+  margin-bottom: 15px;
+  font-weight: 600;
+  animation: fadeInUp 1s ease 0.2s backwards;
+}
+@keyframes fadeInUp { from{opacity:0; transform:translateY(50px);} to{opacity:1; transform:translateY(0);} }
+@keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.02);} }
+
+.hero p {
+  font-size:1.4em;
+  margin-bottom:35px;
+  color: #003d7a;
+  max-width: 700px;
+  line-height: 1.6;
+  animation: fadeInUp 1s ease 0.4s backwards;
+}
+.cta-button {
+  padding:18px 45px;
+  font-size:19px;
+  color:#ffffff;
+  background:linear-gradient(135deg, #0066cc, #0099ff);
+  border:none; border-radius:50px;
+  cursor:pointer;
+  text-decoration:none;
+  position:relative; overflow:hidden;
+  animation: fadeInUp 1s ease 0.6s backwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.3);
+  font-weight: 600;
+}
+.cta-button::before {
+  content:'';
+  position:absolute; top:50%; left:50%;
+  width:0; height:0;
+  border-radius:50%;
+  background: rgba(255,255,255,0.3);
+  transform:translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+.cta-button:hover::before { width:350px; height:350px; }
+.cta-button:hover { 
+  transform:scale(1.08);
+  box-shadow: 0 12px 30px rgba(0, 102, 204, 0.4);
+}
+
+/* Projects Section - Blue and White */
+.projects {
+  padding:120px 50px;
+  text-align:center;
+  background: rgba(255,255,255,0.9);
+}
+.projects h2 {
+  font-size:3.5em;
+  margin-bottom:30px;
+  color: #0066cc;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.2);
+}
+.section-description {
+  font-size: 1.3em;
+  color: #003d7a;
+  margin-bottom: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+.project-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:35px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.project-card {
+  background: rgba(255,255,255,0.95);
+  padding:40px;
+  border-radius:20px;
+  border:2px solid rgba(0, 102, 204, 0.2);
+  transition:all 0.4s ease;
+  animation: fadeIn 1s ease;
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.1);
+}
+.project-card:hover {
+  transform: translateY(-12px);
+  box-shadow:0 20px 50px rgba(0, 102, 204, 0.3);
+  border:2px solid rgba(0, 102, 204, 0.6);
+}
+.project-card h3 {
+  font-size:2em;
+  margin-bottom:18px;
+  color:#0066cc;
+  font-weight: 700;
+}
+.project-card p {
+  color: #003d7a;
+  line-height:1.8;
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+.project-card .tech-stack {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 102, 204, 0.2);
+}
+.project-card .tech-stack span {
+  display: inline-block;
+  padding: 6px 14px;
+  margin: 5px;
+  background: rgba(0, 102, 204, 0.1);
+  color: #0066cc;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+/* Skills Section - Blue and White */
+.skills {
+  padding:120px 50px;
+  text-align:center;
+  background: linear-gradient(135deg, rgba(230, 243, 255, 0.9) 0%, rgba(179, 217, 255, 0.8) 100%);
+}
+.skills h2 {
+  font-size:3.5em;
+  margin-bottom:30px;
+  color: #0066cc;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.2);
+}
+.skill-tags {
+  display:flex;
+  flex-wrap:wrap;
+  gap:25px;
+  justify-content:center;
+  max-width:1000px; margin:40px auto;
+}
+.skill-tag {
+  padding:18px 35px;
+  background: rgba(255,255,255,0.95);
+  border: 2px solid rgba(0, 102, 204, 0.4);
+  border-radius:50px;
+  font-size:17px;
+  color: #0066cc;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+}
+.skill-tag:hover {
+  transform:scale(1.15);
+  box-shadow:0 12px 30px rgba(0, 102, 204, 0.4);
+  background: rgba(0, 102, 204, 0.95);
+  color: white;
+  border-color: #0066cc;
+}
+
+/* About Section - Blue and White */
+.about {
+  padding: 120px 50px;
+  background: rgba(255,255,255,0.95);
+}
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.about h2 {
+  font-size: 3.5em;
+  margin-bottom: 30px;
+  color: #0066cc;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.2);
+}
+.about p {
+  font-size: 1.2em;
+  line-height: 1.9;
+  color: #003d7a;
+  margin-bottom: 20px;
+}
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-top: 40px;
+}
+.stat-box {
+  background: rgba(0, 102, 204, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid rgba(0, 102, 204, 0.2);
+  transition: all 0.3s ease;
+}
+.stat-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 102, 204, 0.3);
+}
+.stat-box .number {
+  font-size: 3em;
+  font-weight: 900;
+  color: #0066cc;
+  display: block;
+  margin-bottom: 10px;
+}
+.stat-box .label {
+  font-size: 1.1em;
+  color: #003d7a;
+  font-weight: 600;
+}
+
+/* Experience Section */
+.experience {
+  padding: 120px 50px;
+  background: linear-gradient(135deg, rgba(230, 243, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%);
+}
+.experience h2 {
+  font-size: 3.5em;
+  margin-bottom: 30px;
+  color: #0066cc;
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.2);
+}
+.timeline {
+  max-width: 900px;
+  margin: 60px auto;
+  position: relative;
+  padding-left: 50px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #0066cc 0%, #0099ff 100%);
+}
+.timeline-item {
+  margin-bottom: 50px;
+  position: relative;
+  background: rgba(255,255,255,0.95);
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid rgba(0, 102, 204, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.1);
+  transition: all 0.3s ease;
+}
+.timeline-item:hover {
+  transform: translateX(10px);
+  box-shadow: 0 12px 30px rgba(0, 102, 204, 0.2);
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -44px;
+  top: 30px;
+  width: 20px;
+  height: 20px;
+  background: #0066cc;
+  border: 4px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.3);
+}
+.timeline-item h3 {
+  font-size: 1.8em;
+  color: #0066cc;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.timeline-item .role {
+  font-size: 1.3em;
+  color: #0052a3;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.timeline-item .duration {
+  color: #0099ff;
+  font-size: 1em;
+  font-weight: 600;
+  margin-bottom: 15px;
+  display: block;
+}
+.timeline-item p {
+  color: #003d7a;
+  line-height: 1.8;
+  font-size: 1.1em;
+}
+
+/* Services/Offerings Section */
+.services {
+  padding: 120px 50px;
+  background: rgba(255,255,255,0.95);
+}
+.services h2 {
+  font-size: 3.5em;
+  margin-bottom: 30px;
+  color: #0066cc;
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.2);
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 35px;
+  max-width: 1400px;
+  margin: 60px auto;
+}
+.service-card {
+  background: rgba(255,255,255,0.95);
+  padding: 40px;
+  border-radius: 20px;
+  border: 2px solid rgba(0, 102, 204, 0.2);
+  text-align: center;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.1);
+}
+.service-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 50px rgba(0, 102, 204, 0.3);
+  border: 2px solid rgba(0, 102, 204, 0.6);
+}
+.service-card .icon {
+  font-size: 4em;
+  margin-bottom: 20px;
+  display: block;
+}
+.service-card h3 {
+  font-size: 1.8em;
+  color: #0066cc;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+.service-card p {
+  color: #003d7a;
+  line-height: 1.8;
+  font-size: 1.05em;
+}
+
+/* Testimonials Section */
+.testimonials {
+  padding: 120px 50px;
+  background: linear-gradient(135deg, rgba(179, 217, 255, 0.3) 0%, rgba(255, 255, 255, 0.9) 100%);
+}
+.testimonials h2 {
+  font-size: 3.5em;
+  margin-bottom: 60px;
+  color: #0066cc;
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.2);
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 35px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.testimonial-card {
+  background: rgba(255,255,255,0.98);
+  padding: 35px;
+  border-radius: 20px;
+  border: 2px solid rgba(0, 102, 204, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.1);
+  transition: all 0.3s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 102, 204, 0.25);
+}
+.testimonial-card .quote {
+  font-size: 1.15em;
+  color: #003d7a;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+.testimonial-card .author {
+  font-weight: 700;
+  color: #0066cc;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+.testimonial-card .position {
+  color: #0099ff;
+  font-size: 0.95em;
+}
+
+/* Blog/Articles Section */
+.blog {
+  padding: 120px 50px;
+  background: rgba(255,255,255,0.95);
+}
+.blog h2 {
+  font-size: 3.5em;
+  margin-bottom: 30px;
+  color: #0066cc;
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.2);
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 35px;
+  max-width: 1400px;
+  margin: 60px auto;
+}
+.blog-card {
+  background: rgba(255,255,255,0.98);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 102, 204, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.1);
+}
+.blog-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(0, 102, 204, 0.3);
+}
+.blog-card .image-placeholder {
+  height: 220px;
+  background: linear-gradient(135deg, #0066cc, #0099ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+  color: white;
+}
+.blog-card .content {
+  padding: 30px;
+}
+.blog-card h3 {
+  font-size: 1.6em;
+  color: #0066cc;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+.blog-card .date {
+  color: #0099ff;
+  font-size: 0.9em;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: block;
+}
+.blog-card p {
+  color: #003d7a;
+  line-height: 1.7;
+  font-size: 1.05em;
+  margin-bottom: 20px;
+}
+.blog-card .read-more {
+  color: #0066cc;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1em;
+  transition: all 0.3s ease;
+}
+.blog-card .read-more:hover {
+  color: #0052a3;
+  text-decoration: underline;
+}
+
+/* Contact Section */
+.contact {
+  padding: 120px 50px;
+  background: linear-gradient(135deg, rgba(230, 243, 255, 0.9) 0%, rgba(179, 217, 255, 0.7) 100%);
+}
+.contact h2 {
+  font-size: 3.5em;
+  margin-bottom: 30px;
+  color: #0066cc;
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 102, 204, 0.2);
+}
+.contact-container {
+  max-width: 1000px;
+  margin: 60px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+.contact-info {
+  background: rgba(255,255,255,0.95);
+  padding: 40px;
+  border-radius: 20px;
+  border: 2px solid rgba(0, 102, 204, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.1);
+}
+.contact-info h3 {
+  font-size: 2em;
+  color: #0066cc;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+.contact-item {
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.contact-item .icon {
+  font-size: 1.8em;
+  color: #0066cc;
+}
+.contact-item .text {
+  color: #003d7a;
+  font-size: 1.1em;
+}
+.social-links {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+.social-link {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #0066cc, #0099ff);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+.social-link:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.5);
+}
+.contact-form {
+  background: rgba(255,255,255,0.95);
+  padding: 40px;
+  border-radius: 20px;
+  border: 2px solid rgba(0, 102, 204, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.1);
+}
+.contact-form h3 {
+  font-size: 2em;
+  color: #0066cc;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  color: #003d7a;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 1.05em;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid rgba(0, 102, 204, 0.3);
+  border-radius: 10px;
+  font-size: 1em;
+  color: #003d7a;
+  background: rgba(255,255,255,0.95);
+  transition: all 0.3s ease;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #0066cc, #0099ff);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.4);
+}
+
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+
+/* Footer - Blue and White */
+footer {
+  text-align:center;
+  padding:50px 40px;
+  background: linear-gradient(135deg, #0066cc, #0099ff);
+  color: white;
+  margin-top:0;
+}
+footer p {
+  font-size: 1.1em;
+  font-weight: 500;
+}
+footer .footer-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+footer .footer-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+footer .footer-links a:hover {
+  text-decoration: underline;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media(max-width:768px){
+  .hero h1{ font-size:3.2em;}
+  .hero .subtitle { font-size: 1.5em; }
+  .hero p { font-size: 1.1em; }
+  nav{padding:15px 20px;}
+  .logo { font-size: 24px; }
+  .nav-links{gap:15px; font-size: 14px;}
+  .projects, .skills, .about, .experience, .services, .testimonials, .blog, .contact {
+    padding: 80px 25px;
+  }
+  .about-container,
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .timeline {
+    padding-left: 30px;
+  }
+  .timeline::before {
+    left: 10px;
+  }
+  .timeline-item::before {
+    left: -34px;
+  }
+  section h2 {
+    font-size: 2.5em !important;
+  }
+}
+@media(max-width:480px){
+  .hero h1{ font-size:2.5em;}
+  .cta-button { padding: 14px 30px; font-size: 16px; }
+  .project-grid,
+  .services-grid,
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+<div class="background"></div>
+
+<!-- Floating Particles -->
+<script>
+for(let i=0;i<70;i++){
+  let p=document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*100+'%';
+  p.style.animationDelay=Math.random()*20+'s';
+  p.style.animationDuration=(Math.random()*10+10)+'s';
+  document.body.appendChild(p);
+}
+</script>
+
+<!-- Navigation -->
+<nav>
+  <div class="logo">PrabathSamarasinghe</div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#services">Services</a>
+    <a href="#skills">Skills</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <h1>Prabath Samarasinghe</h1>
+  <div class="subtitle">Cloud Architect & DevOps Engineer</div>
+  <p>Transforming complex infrastructure challenges into elegant, scalable solutions. Specializing in cloud-native architectures, automation, and infrastructure as code with 8+ years of experience building systems that power millions of users.</p>
+  <a href="#projects" class="cta-button">Explore My Work</a>
+</section>
+
+<!-- About Section -->
+<section class="about" id="about">
+  <div class="about-container">
+    <div class="about-content">
+      <h2>About Me</h2>
+      <p>I'm a passionate Cloud Architect and DevOps Engineer with a proven track record of designing and implementing robust, scalable infrastructure solutions. My expertise spans across AWS, Azure, GCP, and hybrid cloud environments.</p>
+      <p>With over 8 years in the industry, I've helped organizations of all sizes—from startups to Fortune 500 companies—modernize their infrastructure, improve deployment velocity, and reduce operational costs by up to 60%.</p>
+      <p>My approach combines technical excellence with business acumen. I don't just build systems; I create solutions that align with business objectives, ensure security compliance, and enable teams to move faster with confidence.</p>
+      <p>When I'm not architecting cloud solutions, you'll find me contributing to open-source projects, writing technical articles, or mentoring aspiring engineers in the DevOps community.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-box">
+        <span class="number">150+</span>
+        <span class="label">Projects Completed</span>
+      </div>
+      <div class="stat-box">
+        <span class="number">8+</span>
+        <span class="label">Years Experience</span>
+      </div>
+      <div class="stat-box">
+        <span class="number">50+</span>
+        <span class="label">Happy Clients</span>
+      </div>
+      <div class="stat-box">
+        <span class="number">15</span>
+        <span class="label">Certifications</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience Section -->
+<section class="experience" id="experience">
+  <h2>Professional Experience</h2>
+  <p class="section-description">A journey through transformative roles in cloud infrastructure and DevOps engineering</p>
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>TechGlobal Solutions</h3>
+      <div class="role">Senior Cloud Architect</div>
+      <span class="duration">2021 - Present</span>
+      <p>Leading cloud transformation initiatives for enterprise clients. Architected and deployed multi-region, highly available infrastructure serving 10M+ users. Reduced infrastructure costs by 45% through optimization and right-sizing strategies. Implemented comprehensive disaster recovery solutions with RPO < 15 minutes.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>CloudNative Inc.</h3>
+      <div class="role">DevOps Team Lead</div>
+      <span class="duration">2019 - 2021</span>
+      <p>Built and led a team of 8 DevOps engineers. Designed CI/CD pipelines reducing deployment time from hours to minutes. Implemented infrastructure as code practices using Terraform and CloudFormation. Established monitoring and observability standards across 50+ microservices.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Digital Innovations Co.</h3>
+      <div class="role">DevOps Engineer</div>
+      <span class="duration">2018 - 2019</span>
+      <p>Managed AWS infrastructure for SaaS applications. Automated deployment processes using Jenkins and GitLab CI. Implemented container orchestration with Kubernetes. Reduced incident response time by 70% through improved monitoring and alerting.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>StartupHub Technologies</h3>
+      <div class="role">Systems Engineer</div>
+      <span class="duration">2016 - 2018</span>
+      <p>Maintained and optimized Linux server infrastructure. Implemented configuration management using Ansible. Supported development teams with environment provisioning and troubleshooting. Improved system reliability from 95% to 99.5% uptime.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section class="projects" id="projects">
+  <h2>Featured Projects</h2>
+  <p class="section-description">Showcasing innovative solutions that drive business transformation and technical excellence</p>
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>🚀 Multi-Cloud Infrastructure Platform</h3>
+      <p>Architected a comprehensive multi-cloud infrastructure platform supporting AWS, Azure, and GCP. Implemented automated provisioning using Terraform modules, enabling consistent deployments across all cloud providers. The platform handles 500K+ requests per second with 99.99% uptime.</p>
+      <div class="tech-stack">
+        <span>Terraform</span>
+        <span>AWS</span>
+        <span>Azure</span>
+        <span>GCP</span>
+        <span>Kubernetes</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3>🔄 Enterprise CI/CD Pipeline</h3>
+      <p>Designed and implemented a fully automated CI/CD pipeline for a Fortune 500 company with 200+ microservices. Integrated automated testing, security scanning, and progressive deployment strategies. Reduced deployment time from 4 hours to 15 minutes while improving reliability.</p>
+      <div class="tech-stack">
+        <span>Jenkins</span>
+        <span>GitLab CI</span>
+        <span>Docker</span>
+        <span>Argo CD</span>
+        <span>SonarQube</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3>🎨 Serverless Application Framework</h3>
+      <p>Built a comprehensive serverless application framework on AWS Lambda, API Gateway, and DynamoDB. Implemented auto-scaling, cost optimization, and monitoring solutions. Reduced operational costs by 60% while handling 10M+ daily API requests.</p>
+      <div class="tech-stack">
+        <span>AWS Lambda</span>
+        <span>API Gateway</span>
+        <span>DynamoDB</span>
+        <span>CloudWatch</span>
+        <span>Python</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3>📱 Container Orchestration Platform</h3>
+      <p>Deployed production-grade Kubernetes cluster on AWS EKS with advanced networking, service mesh integration, and comprehensive monitoring. Managed 100+ microservices across multiple environments. Implemented GitOps workflows for declarative infrastructure management.</p>
+      <div class="tech-stack">
+        <span>Kubernetes</span>
+        <span>Istio</span>
+        <span>Prometheus</span>
+        <span>Grafana</span>
+        <span>Helm</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3>🔐 Security & Compliance Automation</h3>
+      <p>Developed automated security compliance framework ensuring adherence to SOC 2, HIPAA, and PCI-DSS standards. Implemented infrastructure scanning, vulnerability management, and automated remediation workflows. Achieved 100% compliance audit score.</p>
+      <div class="tech-stack">
+        <span>Terraform</span>
+        <span>AWS Config</span>
+        <span>Vault</span>
+        <span>Sentinel</span>
+        <span>Python</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3>📊 Observability & Monitoring Suite</h3>
+      <p>Architected enterprise-wide observability platform with distributed tracing, metrics aggregation, and log management. Integrated with 50+ services providing real-time insights and predictive alerting. Reduced MTTR by 75% through intelligent alerting and automated runbooks.</p>
+      <div class="tech-stack">
+        <span>Prometheus</span>
+        <span>Grafana</span>
+        <span>ELK Stack</span>
+        <span>Jaeger</span>
+        <span>PagerDuty</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3>💾 Disaster Recovery Solution</h3>
+      <p>Designed and implemented comprehensive disaster recovery solution with cross-region replication, automated failover, and regular DR testing. Achieved RPO of 5 minutes and RTO of 15 minutes for critical systems. Documented and automated recovery procedures.</p>
+      <div class="tech-stack">
+        <span>AWS</span>
+        <span>Terraform</span>
+        <span>Route53</span>
+        <span>RDS</span>
+        <span>S3</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3>🌐 Global CDN Implementation</h3>
+      <p>Deployed global content delivery network serving static and dynamic content to users worldwide. Implemented edge caching strategies, DDoS protection, and automated SSL certificate management. Reduced page load times by 70% and improved user experience across 150+ countries.</p>
+      <div class="tech-stack">
+        <span>CloudFront</span>
+        <span>CloudFlare</span>
+        <span>Lambda@Edge</span>
+        <span>WAF</span>
+        <span>Certificate Manager</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <h3>🤖 Infrastructure Automation Bot</h3>
+      <p>Created intelligent Slack bot for infrastructure automation and self-service provisioning. Enables developers to create environments, check deployment status, and troubleshoot issues without DevOps intervention. Processes 1000+ requests daily with 95% automation rate.</p>
+      <div class="tech-stack">
+        <span>Python</span>
+        <span>Slack API</span>
+        <span>Lambda</span>
+        <span>Terraform</span>
+        <span>DynamoDB</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="services" id="services">
+  <h2>Services & Expertise</h2>
+  <p class="section-description">Comprehensive cloud and DevOps solutions tailored to your business needs</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="icon">☁️</span>
+      <h3>Cloud Architecture</h3>
+      <p>Design and implementation of scalable, secure, and cost-effective cloud architectures on AWS, Azure, and GCP. Expert in multi-cloud strategies, hybrid cloud solutions, and cloud migration planning.</p>
+    </div>
+    <div class="service-card">
+      <span class="icon">🔧</span>
+      <h3>DevOps Transformation</h3>
+      <p>End-to-end DevOps implementation including CI/CD pipeline design, automation framework development, and cultural transformation. Help teams achieve faster delivery with improved quality and reliability.</p>
+    </div>
+    <div class="service-card">
+      <span class="icon">🏗️</span>
+      <h3>Infrastructure as Code</h3>
+      <p>Implementation of infrastructure as code practices using Terraform, CloudFormation, and Pulumi. Version-controlled, repeatable infrastructure deployments with automated testing and validation.</p>
+    </div>
+    <div class="service-card">
+      <span class="icon">🐳</span>
+      <h3>Container Solutions</h3>
+      <p>Kubernetes cluster design, deployment, and management. Container strategy development, Docker optimization, and microservices architecture guidance for modern application deployment.</p>
+    </div>
+    <div class="service-card">
+      <span class="icon">🔒</span>
+      <h3>Security & Compliance</h3>
+      <p>Security-first infrastructure design with automated compliance monitoring. Implementation of secrets management, access control, vulnerability scanning, and audit logging for regulatory compliance.</p>
+    </div>
+    <div class="service-card">
+      <span class="icon">📈</span>
+      <h3>Monitoring & Observability</h3>
+      <p>Comprehensive monitoring solutions with metrics, logging, and distributed tracing. Proactive alerting, dashboard creation, and SLO/SLI implementation for production systems.</p>
+    </div>
+    <div class="service-card">
+      <span class="icon">💰</span>
+      <h3>Cost Optimization</h3>
+      <p>Cloud cost analysis and optimization strategies. Right-sizing recommendations, reserved instance planning, and automated cost control mechanisms to maximize ROI on cloud investments.</p>
+    </div>
+    <div class="service-card">
+      <span class="icon">🎓</span>
+      <h3>Training & Mentoring</h3>
+      <p>Technical training programs for DevOps practices, cloud technologies, and infrastructure automation. One-on-one mentoring for teams transitioning to modern infrastructure practices.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section class="skills" id="skills">
+  <h2>Technologies & Skills</h2>
+  <p class="section-description">Comprehensive technical expertise across cloud platforms, automation tools, and modern DevOps practices</p>
+  <div class="skill-tags">
+    <span class="skill-tag">Terraform</span>
+    <span class="skill-tag">AWS</span>
+    <span class="skill-tag">Azure</span>
+    <span class="skill-tag">Google Cloud Platform</span>
+    <span class="skill-tag">Kubernetes</span>
+    <span class="skill-tag">Docker</span>
+    <span class="skill-tag">Jenkins</span>
+    <span class="skill-tag">GitLab CI/CD</span>
+    <span class="skill-tag">GitHub Actions</span>
+    <span class="skill-tag">Ansible</span>
+    <span class="skill-tag">Python</span>
+    <span class="skill-tag">Bash/Shell Scripting</span>
+    <span class="skill-tag">Go</span>
+    <span class="skill-tag">Node.js</span>
+    <span class="skill-tag">CloudFormation</span>
+    <span class="skill-tag">Pulumi</span>
+    <span class="skill-tag">Helm</span>
+    <span class="skill-tag">Prometheus</span>
+    <span class="skill-tag">Grafana</span>
+    <span class="skill-tag">ELK Stack</span>
+    <span class="skill-tag">Datadog</span>
+    <span class="skill-tag">New Relic</span>
+    <span class="skill-tag">AWS Lambda</span>
+    <span class="skill-tag">API Gateway</span>
+    <span class="skill-tag">ECS/EKS</span>
+    <span class="skill-tag">EC2</span>
+    <span class="skill-tag">S3</span>
+    <span class="skill-tag">RDS</span>
+    <span class="skill-tag">DynamoDB</span>
+    <span class="skill-tag">CloudFront</span>
+    <span class="skill-tag">Route53</span>
+    <span class="skill-tag">VPC</span>
+    <span class="skill-tag">IAM</span>
+    <span class="skill-tag">Istio</span>
+    <span class="skill-tag">Linkerd</span>
+    <span class="skill-tag">ArgoCD</span>
+    <span class="skill-tag">Flux</span>
+    <span class="skill-tag">Vault</span>
+    <span class="skill-tag">Consul</span>
+    <span class="skill-tag">Linux</span>
+    <span class="skill-tag">Nginx</span>
+    <span class="skill-tag">Apache</span>
+    <span class="skill-tag">MySQL</span>
+    <span class="skill-tag">PostgreSQL</span>
+    <span class="skill-tag">MongoDB</span>
+    <span class="skill-tag">Redis</span>
+    <span class="skill-tag">RabbitMQ</span>
+    <span class="skill-tag">Kafka</span>
+    <span class="skill-tag">Git</span>
+    <span class="skill-tag">Jira</span>
+    <span class="skill-tag">Confluence</span>
+    <span class="skill-tag">Slack</span>
+    <span class="skill-tag">PagerDuty</span>
+    <span class="skill-tag">Splunk</span>
+    <span class="skill-tag">SonarQube</span>
+    <span class="skill-tag">Nexus</span>
+    <span class="skill-tag">Artifactory</span>
+    <span class="skill-tag">Security Scanning</span>
+    <span class="skill-tag">Performance Testing</span>
+    <span class="skill-tag">Load Balancing</span>
+    <span class="skill-tag">Auto Scaling</span>
+    <span class="skill-tag">Backup & DR</span>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials" id="testimonials">
+  <h2>Client Testimonials</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <p class="quote">"Prabath transformed our infrastructure completely. His expertise in cloud architecture helped us reduce costs by 50% while improving performance significantly. The migration was seamless and completed ahead of schedule."</p>
+      <div class="author">Michael Chen</div>
+      <div class="position">CTO, TechStartup Inc.</div>
+    </div>
+    <div class="testimonial-card">
+      <p class="quote">"Working with Prabath was an absolute pleasure. He didn't just implement our CI/CD pipelines; he educated our team and established best practices that continue to benefit us today. Deployment time went from hours to minutes."</p>
+      <div class="author">Sarah Williams</div>
+      <div class="position">VP Engineering, DataFlow Systems</div>
+    </div>
+    <div class="testimonial-card">
+      <p class="quote">"The Kubernetes infrastructure Prabath designed for us handles millions of requests daily without a hitch. His attention to security and scalability gave us confidence to grow our business rapidly. Highly recommended!"</p>
+      <div class="author">David Rodriguez</div>
+      <div class="position">Director of Operations, CloudScale</div>
+    </div>
+    <div class="testimonial-card">
+      <p class="quote">"Prabath's approach to DevOps is both practical and forward-thinking. He helped us modernize our entire deployment process and his automation solutions saved our team countless hours. True professional."</p>
+      <div class="author">Jennifer Park</div>
+      <div class="position">Engineering Manager, FinTech Solutions</div>
+    </div>
+    <div class="testimonial-card">
+      <p class="quote">"The disaster recovery solution Prabath implemented gave us peace of mind we never had before. When we faced an unexpected outage, his system worked flawlessly. His expertise is invaluable."</p>
+      <div class="author">Robert Thompson</div>
+      <div class="position">CEO, Enterprise Apps Co.</div>
+    </div>
+    <div class="testimonial-card">
+      <p class="quote">"Prabath's monitoring and observability setup has been a game-changer. We now have complete visibility into our systems and can proactively address issues before they impact users. Outstanding work!"</p>
+      <div class="author">Emily Watson</div>
+      <div class="position">DevOps Lead, MediaStream Platform</div>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Section -->
+<section class="blog" id="blog">
+  <h2>Latest Articles & Insights</h2>
+  <p class="section-description">Sharing knowledge and experiences from the world of cloud infrastructure and DevOps</p>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="image-placeholder">📝</div>
+      <div class="content">
+        <h3>Multi-Cloud Strategy: Benefits and Challenges</h3>
+        <span class="date">December 15, 2025</span>
+        <p>Exploring the advantages of multi-cloud architectures and practical strategies to overcome common implementation challenges. Learn how to avoid vendor lock-in while maintaining operational efficiency.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="image-placeholder">🚀</div>
+      <div class="content">
+        <h3>GitOps: The Future of Infrastructure Management</h3>
+        <span class="date">December 8, 2025</span>
+        <p>Deep dive into GitOps principles and how declarative infrastructure management can revolutionize your deployment workflows. Real-world examples using ArgoCD and Flux.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="image-placeholder">🔒</div>
+      <div class="content">
+        <h3>Zero Trust Security in Cloud Environments</h3>
+        <span class="date">November 28, 2025</span>
+        <p>Implementing zero trust architecture in modern cloud infrastructure. Best practices for identity management, network segmentation, and continuous verification.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="image-placeholder">💡</div>
+      <div class="content">
+        <h3>Cost Optimization Strategies for AWS</h3>
+        <span class="date">November 20, 2025</span>
+        <p>Practical techniques to reduce AWS costs without sacrificing performance. Covers right-sizing, reserved instances, spot instances, and automated optimization tools.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="image-placeholder">🐳</div>
+      <div class="content">
+        <h3>Kubernetes Production Best Practices</h3>
+        <span class="date">November 10, 2025</span>
+        <p>Essential best practices for running Kubernetes in production environments. From resource management to security hardening and disaster recovery planning.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="image-placeholder">📊</div>
+      <div class="content">
+        <h3>Building Effective Observability Systems</h3>
+        <span class="date">October 30, 2025</span>
+        <p>How to implement comprehensive observability using the three pillars: metrics, logs, and traces. Tools, techniques, and strategies for modern distributed systems.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact" id="contact">
+  <h2>Let's Work Together</h2>
+  <p class="section-description">Ready to transform your infrastructure? Get in touch to discuss your project</p>
+  <div class="contact-container">
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+      <div class="contact-item">
+        <span class="icon">📧</span>
+        <span class="text">prabath@clouddevops.io</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">📱</span>
+        <span class="text">+1 (555) 123-4567</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">📍</span>
+        <span class="text">San Francisco, CA, USA</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">🌐</span>
+        <span class="text">Available for remote projects worldwide</span>
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-link">in</a>
+        <a href="#" class="social-link">💼</a>
+        <a href="#" class="social-link">📘</a>
+        <a href="#" class="social-link">🐦</a>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Send a Message</h3>
+      <form>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="John Doe" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="john@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="Project Discussion" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+  <p>&copy; 2025 Prabath Samarasinghe | Cloud Architect & DevOps Engineer</p>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#services">Services</a>
+    <a href="#skills">Skills</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <p style="margin-top: 20px; font-size: 0.95em;">Built with passion for cloud infrastructure and DevOps excellence</p>
+</footer>
+</body>
+</html>
